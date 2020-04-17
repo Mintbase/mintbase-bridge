@@ -1,6 +1,6 @@
 # mintbase-bridge
 
-## Available Scripts
+### Embed you NFT stores on your website
 
 [Mintbase.io](https://mintbase.io)  
 [![CircleCI](https://circleci.com/gh/Mintbase/mintbase-bridge.svg?style=svg)](https://circleci.com/gh/Mintbase/mintbase-bridge)

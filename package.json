@@ -1,6 +1,6 @@
 {
   "name": "mintbase-bridge",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "license": "(ISC OR GPL-3.0)",
   "main": "dist/Embed/index.js",
