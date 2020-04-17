@@ -5,43 +5,53 @@
 [Mintbase.io](https://mintbase.io)  
 [![CircleCI](https://circleci.com/gh/Mintbase/mintbase-bridge.svg?style=svg)](https://circleci.com/gh/Mintbase/mintbase-bridge)
 
-In the project directory, you can run:
+### Install
 
-### `npm start`
+With `npm`:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+npm install mintbase-bridge --save
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+With `yarn`
 
-### `npm test`
+```
+yarn add -S mintbase-bridge
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Documentation
 
-### `npm run build`
+Please refer to the [official Mintbase docs](https://docs.mintbase.io/developers) for
+a more holistic understanding of the various Link options.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Using a React component
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```jsx
+import React, { useState } from "react";
+import Mintbase from "mintbase-bridge";
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const EmbedMintbase = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-### `npm run eject`
+  return (
+    <Mintbase
+      contract="0x202d2f33449bf46d6d32ae7644ada130876461a4"
+      show={isOpen}
+      handleClose={setIsOpen}
+    />
+  );
+};
+export default EmbedMintbase;
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Typescript
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can find your contract hash when you deploy your store or you can embed other martets as well.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+interface MintbaseProps {
+  contract: string;
+  show: boolean;
+  handleClose: (usClosed: boolean) => void
+}
+```
