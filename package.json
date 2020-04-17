@@ -1,14 +1,18 @@
 {
   "name": "mintbase-bridge",
-  "version": "0.1.0",
+  "version": "0.0.3",
   "private": false,
   "license": "(ISC OR GPL-3.0)",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "babel": {
-    "presets": [
-      "@babel/react"
-    ]
+  "main": "dist/Embed/index.js",
+  "module": "dist/Embed/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prep": "rm -rf dist && tsc src/Embed/index.tsx --outDir dist --jsx react --esModuleInterop --skipLibCheck --allowSyntheticDefaultImports --resolveJsonModule --moduleResolution node --strict",
+    "publish:npm": "SET NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src/Embed --out-dir dist --copy-files"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -18,20 +22,19 @@
     "@types/node": "^12.12.35",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "typescript": "^3.7.5"
+    "react-spring": "^8.0.27",
+    "styled-components": "^5.1.0",
+    "styled-icons": "^10.2.1",
+    "typescript": "^3.7.5",
+    "react-scripts": "3.4.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Mintbase/mintbase-bridge.git"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,6 +52,14 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4"
+    "@babel/cli": "^7.8.4",
+    "@types/styled-components": "^5.1.0",
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/react"
+    ]
   }
 }

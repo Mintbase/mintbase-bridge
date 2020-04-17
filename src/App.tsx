@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Embed from "./Embed";
+import styled from "styled-components";
+import * as styles from "./styles";
+
+const Container = styled.div`
+  display: flex;
+  background-image: url("./background.png");
+`;
+
+const Button = styled.button`
+  display: flex;
+  background-color: ${styles.DARK};
+  color: ${styles.OFF_WHITE};
+`;
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="App">
+    <Container className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Embed
+          contract="0x0223ea957606c8dfac36d9efc6d9ebcb247fb4df"
+          show={isOpen}
+          handleClose={setIsOpen}
+        />
+        <Button onClick={() => setIsOpen(true)}>Show Market</Button>
       </header>
-    </div>
+    </Container>
   );
 }
 

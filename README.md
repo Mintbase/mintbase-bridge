@@ -1,6 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# mintbase-bridge
 
 ## Available Scripts
+
+[Mintbase.io](https://mintbase.io)  
+[![CircleCI](https://circleci.com/gh/Mintbase/mintbase-bridge.svg?style=svg)](https://circleci.com/gh/Mintbase/mintbase-bridge)
 
 In the project directory, you can run:
 
