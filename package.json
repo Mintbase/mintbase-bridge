@@ -3,6 +3,7 @@
   "version": "0.0.4",
   "private": false,
   "license": "(ISC OR GPL-3.0)",
+  "keywords": ["ethereum", "NFT", "react", "store"],
   "main": "dist/Embed/index.js",
   "module": "dist/Embed/index.js",
   "types": "dist/index.d.ts",

@@ -1,5 +1,5 @@
 // HelloWorld.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
 import { Close } from "@styled-icons/evil/Close";

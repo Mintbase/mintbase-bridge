@@ -1,7 +1,10 @@
 # mintbase-bridge
 
-### Embed you NFT stores on your website
+### Embed your NFT stores on your website
 
+### NOT READY FOR USE!!!!
+
+Still in beta, will be ready soon.
 [Mintbase.io](https://mintbase.io)  
 [![CircleCI](https://circleci.com/gh/Mintbase/mintbase-bridge.svg?style=svg)](https://circleci.com/gh/Mintbase/mintbase-bridge)
 
@@ -46,7 +49,7 @@ export default EmbedMintbase;
 
 ### Typescript
 
-You can find your contract hash when you deploy your store or you can embed other martets as well.
+You can find your contract hash when you deploy your store or you can embed other folks markets as well.
 
 ```
 interface MintbaseProps {
