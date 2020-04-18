@@ -1,9 +1,14 @@
 {
   "name": "mintbase-bridge",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "license": "(ISC OR GPL-3.0)",
-  "keywords": ["ethereum", "NFT", "react", "store"],
+  "keywords": [
+    "ethereum",
+    "NFT",
+    "react",
+    "store"
+  ],
   "main": "dist/Embed/index.js",
   "module": "dist/Embed/index.js",
   "types": "dist/index.d.ts",
