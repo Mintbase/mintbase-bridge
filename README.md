@@ -2,8 +2,6 @@
 
 ### Embed your NFT stores on your website
 
-### NOT READY FOR USE!!!!
-
 Still in beta, will be ready soon.
 [Mintbase.io](https://mintbase.io)  
 [![CircleCI](https://circleci.com/gh/Mintbase/mintbase-bridge.svg?style=svg)](https://circleci.com/gh/Mintbase/mintbase-bridge)
@@ -61,6 +59,9 @@ You can find your contract hash when you deploy your store or you can embed othe
 interface MintbaseProps {
   contract: string;
   show: boolean;
-  handleClose: (usClosed: boolean) => void
+  handleClose: (isOpen: boolean) => void;
+  dark?: string;
+  darker?: string;
+  darkAlpha?: string;
 }
 ```
