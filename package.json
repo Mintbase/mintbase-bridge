@@ -1,6 +1,6 @@
 {
   "name": "mintbase-bridge",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "license": "(ISC OR GPL-3.0)",
   "keywords": [
@@ -36,8 +36,8 @@
     "typescript": "^3.7.5"
   },
   "peerDependencies": {
-    "react": ">=16.13.1",
-    "react-dom": ">=16.13.1"
+    "react": ">=16.13.0",
+    "react-dom": ">=16.13.0"
   },
   "repository": {
     "type": "git",
