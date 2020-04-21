@@ -77,17 +77,33 @@ export const CloseX = styled(Close)`
 
 const IFrame: any = styled.iframe`
   display: flex;
+  position: relative;
   flex-grow: 1;
   border: 1px solid ${styles.FADDED};
   background-color: ${({ color }) => (color ? color : styles.DARK_ALPHA)};
   -webkit-box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.24);
   box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.24);
+
+  @media (max-width: ${styles.GRID_SM}px) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+  }
 `;
+
+export enum Network {
+  rinkeby = "rinkeby",
+  mainnet = "homestead",
+}
 
 interface EmbedProps {
   contract: string;
   show: boolean;
+  network?: Network;
   handleClose: (isOpen: boolean) => void;
   dark?: string;
   darker?: string;
@@ -101,13 +117,17 @@ const defaultProps = {
   dark: styles.DARK,
   darkAlpha: styles.DARK_ALPHA,
   darkest: styles.DARKER,
+  network: Network.mainnet,
 };
 
 const Embed = (props: EmbedProps = defaultProps) => {
   const { contract, show, handleClose, darkAlpha, darker, dark } = props;
   var str = qs.stringify({ ...props, isEmbeded: true });
 
-  const link = `http://localhost:3000/embed/${contract}?${str}`;
+  // const link = `http://localhost:3000/embed/${contract}?${str}`;
+
+  const link = `https://mintbase.io/embed/${contract}?${str}`;
+  // https://81bbc3e3.ngrok.io
 
   const [loading, setLoading] = useState(true);
 

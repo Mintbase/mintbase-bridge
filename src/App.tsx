@@ -24,6 +24,9 @@ function App() {
           contract="0x0223ea957606c8dfac36d9efc6d9ebcb247fb4df"
           show={isOpen}
           handleClose={setIsOpen}
+          dark="rgba(204, 15, 67, 1)"
+          darker="rgba(126, 0, 48, 1)"
+          darkAlpha="rgba(204, 15, 67, 0.8)"
         />
         <Button onClick={() => setIsOpen(true)}>Show Market</Button>
       </header>

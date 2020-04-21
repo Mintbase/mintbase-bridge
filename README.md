@@ -56,9 +56,16 @@ export default EmbedMintbase;
 You can find your contract hash when you deploy your store or you can embed other folks markets as well.
 
 ```
+export enum Network {
+  rinkeby = "rinkeby",
+  mainnet = "homestead",
+}
+
+
 interface MintbaseProps {
   contract: string;
   show: boolean;
+  network?: Network;
   handleClose: (isOpen: boolean) => void;
   dark?: string;
   darker?: string;
