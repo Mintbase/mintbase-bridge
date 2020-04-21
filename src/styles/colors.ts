@@ -17,6 +17,8 @@ export const OLD_ACCENT: "rgba(230, 192, 15, 1)" = "rgba(230, 192, 15, 1)";
 export const DROP_SHADOW: "drop-shadow(10px 4px 4px rgba(0, 0, 0, 0.2));" =
   "drop-shadow(10px 4px 4px rgba(0, 0, 0, 0.2));";
 
+export const FADDED: "rgba(255, 255, 255, 0.3)" = "rgba(255, 255, 255, 0.3)";
+
 export const DARK1: "rgba(216, 216, 214, 1)" = "rgba(216, 216, 214, 1)";
 export const DARK2: "rgba(140, 139, 136, 1)" = "rgba(140, 139, 136, 1)";
 export const DARK3: "rgba(114, 114, 113, 1)" = "rgba(114, 114, 113, 1)";

@@ -1,6 +1,7 @@
 // HelloWorld.js
 import React, { useState } from "react";
 import styled from "styled-components";
+import qs from "qs";
 import { useSpring, animated } from "react-spring";
 import { Close } from "@styled-icons/evil/Close";
 import * as styles from "../styles";
@@ -19,7 +20,7 @@ const Container = styled(animated.div)`
   right: 0;
   height: 100%;
   z-index: 100;
-  background-color: rgba(60, 60, 60, 0.8);
+  background-color: ${({ color }) => (color ? color : styles.DARK_ALPHA)};
 `;
 
 const Content = styled(animated.div)`
@@ -53,16 +54,17 @@ const LogoContent = styled(animated.div)`
 
 export const CloseButton = styled.div`
   position: absolute;
-  right: ${styles.PADDING_XXS};
-  top: ${styles.PADDING_XXS};
+  right: 0;
+  top: 0;
   text-decoration: none;
-  background-color: ${styles.DARK};
-  padding: ${styles.PADDING_SM};
-  padding-top: ${styles.PADDING_XXS};
+  background-color: ${({ color }) => color};
+  padding: ${styles.PADDING_XXS};
+  padding-top: 0;
+
   color: ${styles.OFF_WHITE};
   font-size: 1.6em;
   z-index: 101;
-  border: 1px solid ${styles.DARK3};
+  border: 1px solid ${styles.FADDED};
   &:hover {
     cursor: pointer;
   }
@@ -70,16 +72,14 @@ export const CloseButton = styled.div`
 
 export const CloseX = styled(Close)`
   color: ${styles.OFF_WHITE};
-  align-self: center;
-  width: 45px;
-  height: 45px;
+  margin: 0;
 `;
 
 const IFrame: any = styled.iframe`
   display: flex;
   flex-grow: 1;
-  border: 1px solid ${styles.DARK3};
-  background-color: ${styles.DARK_ALPHA};
+  border: 1px solid ${styles.FADDED};
+  background-color: ${({ color }) => (color ? color : styles.DARK_ALPHA)};
   -webkit-box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.24);
   box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.24);
@@ -89,10 +89,25 @@ interface EmbedProps {
   contract: string;
   show: boolean;
   handleClose: (isOpen: boolean) => void;
+  dark?: string;
+  darker?: string;
+  darkAlpha?: string;
 }
 
-const Embed = ({ contract, show, handleClose }: EmbedProps) => {
-  const link = `http://localhost:3000/embed/${contract}?somedata=5&more=bacon&isEmbeded=true`;
+const defaultProps = {
+  contract: "0xccf41b9be3860cc0fbe235be59fa622ddf78253c",
+  show: false,
+  handleClose: () => {},
+  dark: styles.DARK,
+  darkAlpha: styles.DARK_ALPHA,
+  darkest: styles.DARKER,
+};
+
+const Embed = (props: EmbedProps = defaultProps) => {
+  const { contract, show, handleClose, darkAlpha, darker, dark } = props;
+  var str = qs.stringify({ ...props, isEmbeded: true });
+
+  const link = `http://localhost:3000/embed/${contract}?${str}`;
 
   const [loading, setLoading] = useState(true);
 
@@ -117,13 +132,17 @@ const Embed = ({ contract, show, handleClose }: EmbedProps) => {
 
   return (
     <Page>
-      <Container style={styleProps} onClick={() => handleOnClose(false)}>
-        <CloseButton onClick={() => handleOnClose(false)}>
+      <Container
+        color={darkAlpha}
+        style={styleProps}
+        onClick={() => handleOnClose(false)}>
+        <CloseButton color={darker} onClick={() => handleOnClose(false)}>
           <CloseX size={40} />
         </CloseButton>
 
         <Content style={loadingProps}>
           <IFrame
+            color={dark}
             frameBorder="0"
             onLoad={() => setLoading(false)}
             src={link}
@@ -137,4 +156,5 @@ const Embed = ({ contract, show, handleClose }: EmbedProps) => {
     </Page>
   );
 };
+
 export default Embed;
