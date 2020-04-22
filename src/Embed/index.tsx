@@ -1,5 +1,5 @@
 // HelloWorld.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import qs from "qs";
 import { useSpring, animated } from "react-spring";
@@ -124,6 +124,8 @@ const Embed = (props: EmbedProps = defaultProps) => {
   const { contract, show, handleClose, darkAlpha, darker, dark } = props;
   var str = qs.stringify({ ...props, isEmbeded: true });
 
+  const [screenWidth, setScreenWidth] = useState(3000);
+
   // const link = `http://localhost:3000/embed/${contract}?${str}`;
 
   const link = `https://mintbase.io/embed/${contract}?${str}`;
@@ -132,23 +134,28 @@ const Embed = (props: EmbedProps = defaultProps) => {
   const [loading, setLoading] = useState(true);
 
   const styleProps = useSpring({
-    transform: show ? `scaleX(0px, 0px)` : `translate(${-1200 * 2}px, 0px)`,
-    opacity: show ? 1 : 0.7,
+    transform: show
+      ? `translate(0px, 0px)`
+      : `translate(${screenWidth}px, 0px)`,
+    opacity: show ? 1 : 0,
   });
 
   const loadingProps = useSpring({
-    transform: !loading ? `scaleX(0px, 0px)` : `scaleX(${-1200 * 2}px, 0px)`,
+    transform: !loading
+      ? `translate(0px, 0px)`
+      : `translate(${screenWidth}px, 0px)`,
     opacity: !loading ? 1 : 0.7,
-  });
-
-  const loadingLogo = useSpring({
-    transform: loading ? `scaleX(0px, 0px)` : `scaleX(${-1200 * 2}px, 0px)`,
-    opacity: loading ? 1 : 0.7,
   });
 
   const handleOnClose = (isOpen: boolean) => {
     handleClose(false);
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setScreenWidth(window.innerWidth * 2);
+    }
+  }, [window]);
 
   return (
     <Page>
@@ -169,9 +176,6 @@ const Embed = (props: EmbedProps = defaultProps) => {
             height="100%"
             width="100%"></IFrame>
         </Content>
-        <LogoContent style={loadingLogo}>
-          <MintbaseLogo width={300} color={styles.OFF_WHITE} />
-        </LogoContent>
       </Container>
     </Page>
   );

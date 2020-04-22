@@ -16,7 +16,7 @@ export const SCREEN_MD_RAW = 950;
 export const SCREEN_XL_RAW = 1365;
 export const SCREEN_XL = `${SCREEN_XL_RAW}px`;
 
-export const POLLING_INTERVAL = 945;
+export const POLLING_INTERVAL = 5000;
 
 export const isMobile = () => {
   if (typeof navigator === "undefined") {
