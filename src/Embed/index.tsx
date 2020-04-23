@@ -124,7 +124,7 @@ const Embed = (props: EmbedProps = defaultProps) => {
   const { contract, show, handleClose, darkAlpha, darker, dark } = props;
   var str = qs.stringify({ ...props, isEmbeded: true });
 
-  const [screenWidth, setScreenWidth] = useState(3000);
+  const [screenWidth, setScreenWidth] = useState(6000);
 
   // const link = `http://localhost:3000/embed/${contract}?${str}`;
 
@@ -155,7 +155,7 @@ const Embed = (props: EmbedProps = defaultProps) => {
     if (typeof window !== "undefined") {
       setScreenWidth(window.innerWidth * 2);
     }
-  }, [window]);
+  }, []);
 
   return (
     <Page>
